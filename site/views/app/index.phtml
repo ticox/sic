@@ -1,0 +1,380 @@
+<div class="container-fluid app">
+<div class="row">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="nav-side-menu col-md-2">
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+  
+        <div class="menu-list">
+  
+            <ul id="menu-content" class="menu-content collapse out">
+                <li>
+                  <a href="<?php echo BASE_URL ?>">
+                  <i class="fa fa-dashboard fa-lg"></i> Inicio
+                  </a>
+                </li>
+
+                <li  data-toggle="collapse" data-target="#products" class="collapsed">
+                  <a href="#"><i class="fa fa-gift fa-lg"></i> Editar Informacion <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="products">
+                    <a id="buscar_nosotros" data-toggle="modal" data-target="#nosotros"><li>Nosotros</li></a>
+                    <a id="buscar_mision" data-toggle="modal" data-target="#mision"><li>Misión</li></a>
+                    <a id="buscar_vision" data-toggle="modal" data-target="#vision"><li>Visión</li></a>
+                    <a id="buscar_preview" data-toggle="modal" data-target="#preview"><li>Preview</li></a>
+                    <a id="buscar_titulo" data-toggle="modal" data-target="#titulo"><li>Titulo de inicio</li></a>
+                    <a id="buscar_contactos" data-toggle="modal" data-target="#contactos"><li>Contactos</li></a>
+                </ul>
+
+
+                <li>
+                  <a id="editar_servicio"><i class="fa fa-globe fa-lg"></i> Editar Servicios </a>
+                </li>  
+                
+
+
+                <li >
+                  <a data-toggle="modal" data-target="#servicio"> <i class="fa fa-car fa-lg"></i> Agregar Nuevo Servicio </a>
+                </li>
+
+                <li >
+                  <a id="agregar_clientes"> <i class="fa fa-car fa-lg"></i> Agregar Clientes </a>
+                </li>
+
+                <li >
+                  <a id="agregar_marcas"> <i class="fa fa-car fa-lg"></i> Agregar Marcas </a>
+                </li>
+
+                 <li>
+                  <a id="crear_usuarios">
+                  <i class="fa fa-users fa-lg"></i> Crear Usuarios
+                  </a>
+                </li>
+            </ul>
+     </div>
+</div>
+<div class=" col-md-9"> 
+
+  <div  class="titulo-header col-md-12">
+  
+  <center> <h3> PANEL DE ADMINISTRACION </h3> </center>
+</div>
+
+
+<div class="col-md-6 col-md-offset-3" id="div_usuario">
+<div class="col-md-12"><center> <h4> Crear Usuario </h4> </center></div>
+ <div class="form-group ">
+              <label class="control-label">Usuario</label>
+              
+                <input type="text" type="text" class="form-control" id="usuario" name="usuario" required="required">
+              
+          </div>
+          <div class="form-group">
+              <label class=" control-label">Contraseña</label>
+            
+                <input type="password" type="text" class="form-control" id="contraseña" name="contraseña" required="required">
+              
+          </div>
+          <div class="form-group ">
+              <label class=" control-label">Confirmar Contraseña</label>
+          
+                <input type="password" type="text" class="form-control" id="confirmar_contraseña" name="confirmar" required="required">
+              
+          </div>
+            <div class="form-group ">
+              <button id="crear_usuario" type="button" class="btn btn-primary btn-sm" disabled>Crear</button>
+              <button id="cancelar_crearusuario" type="button" class="btn btn-primary btn-sm">Cancelar</button>
+
+          </div>
+
+
+</div>
+
+<div class="col-md-6 col-md-offset-3" id="div_servicio">
+<div class="col-md-12"><center> <h4> Editar Servicios </h4> </center></div>
+    <div class="form-group">
+    <label for="exampleFormControlSelect1">Seleccione el servicio a modificar</label>
+    <select class="form-control" id="modificar_servicio">
+      <option> -> Seleccione <- </option>
+      
+    </select>
+  </div>
+          
+      <div class="form-group ">
+      <center><button id="cancelar_mservicio" type="button" class="btn btn-primary btn-sm">Cancelar</button> </center>
+      </div>
+</div>
+
+<div class="col-md-6 col-md-offset-3" id="div_clientes">
+<div class="col-md-12"><center> <h4> Agregar Clientes </h4> </center></div>
+<form id="form_agregar_cliente" enctype="multipart/form-data" method="post" action="<?php echo BASE_URL ?>app/guardar_publicacion_cliente" >    
+    <div class="form-group">
+  
+        <label class=" control-label">Nombre del Cliente</label>
+        <input type="text" type="text" class="form-control" id="nombre_cliente" name="nombre_cliente" >
+    </div>
+
+    <div class="form-group">
+  
+        <label class=" control-label">Link del Cliente</label>
+        <input type="text" type="text" class="form-control" id="linkc" name="linkc" >
+    </div>
+    <div class="form-group">
+  
+        <label class=" control-label">Seleccionar la Imagen</label>
+        <input  type="file" id="files" name="foto[]">
+    </div>
+    <div class="row">
+        <div id="list" class="col-md-12 titulo-img"><center> <h4> Previsualización </h4> </center></div>
+    </div>
+            
+
+          
+      <div class="form-group ">
+      <center><button id="guardar_clientes" type="submit" class="btn btn-primary btn-sm" disabled>Guardar</button> <button id="cancelar_aclientes" type="button" class="btn btn-primary btn-sm">Cancelar</button> </center>
+      </div>
+    </form>
+</div>
+
+
+
+
+<div class="col-md-6 col-md-offset-3" id="div_marcas">
+<div class="col-md-12"><center> <h4> Agregar Marcas </h4> </center></div>
+    <form id="form_agregar_cliente" enctype="multipart/form-data" method="post" action="<?php echo BASE_URL ?>app/guardar_publicacion_marca" > 
+      <div class="form-group">
+  
+        <label class=" control-label">Nombre de la marca</label>
+        <input type="text" type="text" class="form-control" id="nombre_marca" name="nombre_marca" >
+    </div>
+
+    <div class="form-group">
+  
+        <label class=" control-label">Seleccionar la Imagen</label>
+        <input  type="file" id="files2" name="foto[]">
+    </div>
+    <div class="row">
+        <div id="list2" class="col-md-12 titulo-img"><center> <h4> Previsualización </h4> </center></div>
+    </div>
+          
+      <div class="form-group ">
+      <center><button id="guardar_marcas" type="submit" class="btn btn-primary btn-sm" disabled>Guardar</button> <button id="cancelar_amarcas" type="button" class="btn btn-primary btn-sm">Cancelar</button> </center>
+      </div>
+
+    </form>
+</div>
+
+</div>
+
+
+
+
+
+</div>
+</div>
+
+
+
+<!-- Modal Nosotros-->
+<div class="modal fade modalapp" id="nosotros" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Nosotros</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="divnosotros">
+        <h3> <center> Cargando... </center></h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="guardar_nosotros">Guardar Cambios</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal mision-->
+<div class="modal fade modalapp" id="mision" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Misión</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="divmision">
+         <h3> <center> Cargando... </center></h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="guardar_mision">Guardar Cambios</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal vision -->
+<div class="modal fade modalapp" id="vision" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Visión</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="divvision">
+        <h3> <center> Cargando... </center></h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="guardar_vision">Guardar Cambios</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal preview -->
+<div class="modal fade modalapp" id="preview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Preview</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="divpreview">
+        <h3> <center> Cargando... </center></h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="guardar_preview">Guardar Cambios</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal titulo -->
+
+<div class="modal fade modalapp" id="titulo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Titulo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="divtitulo">
+        <h3> <center> Cargando... </center></h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="guardar_titulo">Guardar Cambios</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal contactos -->
+
+<div class="modal fade modalapp" id="contactos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Contactos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="divcontactos">
+        <h3> <center> Cargando... </center></h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="guardar_contactos">Guardar Cambios</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Nuevo Servicio -->
+
+<div class="modal fade modalapp" id="servicio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nuevo Servicio</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="nvoservicio">
+         <div class="form-group ">
+              <label class="control-label">Titulo</label>
+              
+                <input type="text" type="text" class="form-control" id="titulo_servicio" name="titulo_servicio" required="required">
+              
+          </div>
+
+          <div class="form-group ">
+              <label class="control-label">Descripción</label>
+              
+                <textarea  class="form-control" id="descripcion" required="required"> </textarea>
+              
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="guardar_servicio">Guardar Cambios</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modificar Servicio -->
+
+<div class="modal fade modalapp" id="mod_servicio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modificar Servicio</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="mservicio">
+         <h3> <center> Cargando... </center></h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="servicio_modificado">Guardar Cambios</button>
+        <button type="button" class="btn btn-secondary" id="eliminar_servicio">Eliminar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

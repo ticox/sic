@@ -1,0 +1,87 @@
+<div id="titulo">registro de socios y/o encargado</div>
+<div class="col-md-6 col-md-offset-3">
+
+
+	
+	<form id="agregar">
+	  <div class="form-group">
+	    <label for="nacionalidad">Nacionalidad</label>
+	    <select id="nacionalidad" class="form-control">
+	    	
+	    	<option value="V">
+	    		V
+	    	</option>
+	    	<option value="E">
+	    		E
+	    	</option>
+	    </select>
+
+	  
+	  </div>
+	  <div class="form-group">
+	    <label for="Cedula">Cedula</label>
+	    <input type="text" class="form-control" id="cedula" placeholder="Cedula">
+	    <img hidden="true" id="iimg" src="<?php echo BASE_URL ?>public/img/carga.gif">
+	  </div>
+
+	  <div class="form-group">
+	    <label for="rif">Rif</label>
+	    <input type="text" class="form-control" id="rif" placeholder="RIF">
+	  </div>
+
+	  <div class="form-group">
+	    <label for="Nombres">Nombres</label>
+	    <input type="text" class="form-control" id="nombres" placeholder="Nombres">
+	  </div>
+
+	  <div class="form-group">
+	    <label for="apellidos">Apellidos</label>
+	    <input type="text" class="form-control" id="apellidos" placeholder="Apellidos">
+	  </div>
+
+	  <div class="form-group">
+	    <label for="telefono">Telefono</label>
+	    <input type="text" class="form-control" id="telefono" placeholder="Telefono">
+	  </div>
+
+	  <div class="form-group">
+	    <label for="direccion">Direccion</label>
+	    <input type="text" class="form-control" id="direccion" placeholder="Direccion">
+	  </div>
+
+	  <div class="form-group">
+	    <label for="codigo">Codigo del Carnet de la Patria</label>
+	    <input type="text" class="form-control" id="codigo" placeholder="Codigo">
+	  </div>
+
+	  <div class="form-group">
+	    <label for="serial">Serial del Carnet de la Patria</label>
+	    <input type="text" class="form-control" id="serial" placeholder="serial">
+	  </div>
+
+	  <div class="form-group">
+	    <label for=""> ¿Posee Certificado Medico?</label>
+	    <select name="" id="certificado_medico" class="form-control">
+	    	<option value="">--Seleccione--</option>
+	    	<option value="SI">-SI-</option>
+	    	<option value="NO">-NO-</option>
+	    </select>
+	 </div>
+	 
+
+	 
+
+	     <div class="form-group">
+	    <label for="productora">Productora</label>
+	 
+	     <input type="text" disabled="disabled" value="<?php echo $this->id ?>" class="form-control" id="productora" placeholder="productora">
+
+
+		
+	  <button type="button" id="guardar" class="btn btn-default">Guardar</button>
+	  <button type="button" id="inicio" class="btn btn-default">Inicio</button>
+	
+</div>
+</form>
+</div>
+		

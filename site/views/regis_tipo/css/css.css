@@ -1,0 +1,41 @@
+/* estos son para pantallas sm */
+/* ---------------------------------------------------------------------------------------------------- */
+@media (min-width: 750px) and (max-width: 970px) {
+
+}
+/* estos son para pantallas xs */
+/* ---------------------------------------------------------------------------------------------------- */
+@media  (max-width: 749px) {
+
+
+}
+/* fin de los media  */
+/* ---------------------------------------------------------------------------------------------------- */
+
+.col-md-6.col-md-offset-3 {
+	margin-top: 50px;
+	border: 1px solid #e6e6fe;
+	padding: 53px;
+	border-radius: 5px;
+}
+
+div.form-group:nth-child(10) {
+	text-align: center;
+	padding-top: 20px;
+}
+#guardar {
+	/* padding-top: 20px; */
+	margin-top: 20px;
+}
+#inicio {
+	margin-top: 20px;
+}
+#iimg {
+    width: 14%;
+   
+}
+*/
+#cedula {
+    width: 80%;
+}
+*/

@@ -1,0 +1,66 @@
+/* estos son para pantallas sm */
+/* ---------------------------------------------------------------------------------------------------- */
+@media (min-width: 750px) and (max-width: 970px) {
+
+}
+/* estos son para pantallas xs */
+/* ---------------------------------------------------------------------------------------------------- */
+@media  (max-width: 749px) {
+
+
+}
+/* fin de los media  */
+/* ---------------------------------------------------------------------------------------------------- */
+#regis_de_emp-productora {
+	border-radius: 5px;
+	border: solid 1px #83c0c0;
+	margin-top: 20px;
+	min-height: 141px;
+	padding-top: 11px;
+	background-image: url("../../../../public/img/harina.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: 0px 26px;
+	font-size: 15px;
+	color: #397105;
+}
+#regis_de_personal {
+border-radius: 5px;
+	border: solid 1px #83c0c0;
+	margin-top: 20px;
+	min-height: 141px;
+	padding-top: 11px;
+	background-image: url("../../../../public/img/pana.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: 0px 26px;
+	font-size: 15px;
+	color: #397105;
+}
+#text {
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 20px;
+	font-size: 28px;
+
+}
+
+#regis_de_emp-productora:hover,#regis_de_personal:hover {
+  cursor: pointer;
+    box-shadow: 10px 9px 9px 0px;
+}
+
+#textt {
+	text-align: justify;
+	text-decoration-color: wheat;
+	text-transform: full-width;
+	
+	padding: 10px;
+}
+
+
+
+#text, #textt {
+	border-bottom: 1px solid #b9dec2;
+}
+

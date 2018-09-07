@@ -1,0 +1,19 @@
+
+<div class="col-md-12 vista_cambiar back_cambiar">
+	
+<center> <h2><?php if($this->mensaje) echo $this->mensaje; ?></h2> </center>
+
+<p>&nbsp;</p>
+
+<a href="<?php echo BASE_URL; ?>">Inicio</a> | 
+<a href="javascript:history.back(1)">Regresar a la pagina Anterior</a>
+
+<?php if(!Session::get('autenticado')): ?>
+
+| <a href="<?php echo BASE_URL ; ?>login">Loguearse</a>
+
+<?php endif; ?>
+
+	
+</div>
+
