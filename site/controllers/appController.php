@@ -10,8 +10,8 @@ class appController extends Controller
     public function __construct() {
 
         Session::acceso();
+
         parent::__construct();
-      $this->getLibrary('simpleimage');
       $this->app=$this->loadModel('app');
 		
     }
@@ -20,8 +20,8 @@ class appController extends Controller
     {
 
  
-			$this->_view->setJs(array('js','etheme','ftheme','fileinput','sortable'));
-			$this->_view->setCss(array('css','fileinput','theme'));
+			$this->_view->setJs(array('js','jscolor'));
+			$this->_view->setCss(array('css'));
         	$this->_view->titulo = 'menus';
 
         	$menu=$this->app->traer_menus();
@@ -40,31 +40,28 @@ class appController extends Controller
         	        		}
         	        		
         	        		}
+        		
+        		
+
+        	
+
         	}
 
-                  
-              			$this->_view->renderizar('index');		
+
+
+
+             $this->_view->bloqueo=$this->app->bloqueo();
+            $this->_view->bloqueo_datos=$this->app->bloqueo_datos();
+        	$this->_view->cont=$this->app->all_cont();
+            $this->_view->logs=$this->app->all_logs();
+        	$this->_view->menus=$menu;
+			$this->_view->rol=$role;
+			$this->_view->matris=$matris;
+			$this->_view->renderizar('index');		
 	}
 
 
   
- public function guardar_publicacion_cliente()
-        {
-                $this->app->guardar_publicacion_cliente($_POST,$_FILES);
-               
-                $this->redireccionar('app');
-
-        }
-
-         public function guardar_publicacion_marca()
-        {
-
-                $this->app->guardar_publicacion_marca($_POST,$_FILES);
-               
-                $this->redireccionar('app');
-
-        }
-
     function permisos_ch(){
 
 
@@ -72,126 +69,44 @@ class appController extends Controller
 
     }
 
-     public function buscar_servicios(){
-
-
-    echo json_encode($this->app->buscar_servicios());
-
-
-   }
-
-   public function buscar_servicio(){
-
-
-    echo json_encode($this->app->buscar_servicio($_POST));
-
-
-   }
-
-    public function servicio_modificado(){
-
-
-    $this->app->servicio_modificado($_POST);
-
-
-   }
-
-
-   public function guardar_contactos(){
-
-
-    $this->app->guardar_contactos($_POST);
-
-
-   }
-
-
-     public function guardar_usuario(){
-
-
-        $this->app->guardar_usuario($_POST);
-
-
-   }
-
-    public function buscar_nosotros(){
-
-
-    echo json_encode($this->app->buscar_nosotros());
-
-
-   }
-
-
-     public function guardar_nosotros(){
-
-
-        $this->app->guardar_nosotros($_POST);
-   }
-
-
-    public function guardar_servicio(){
-
-
-        $this->app->guardar_servicio($_POST);
-
-   }
-
-
-   public function eliminar_servicio(){
-
-
-        $this->app->eliminar_servicio($_POST);
-
-   }
-
-   public function buscar_informacion(){
-
-
-    echo json_encode($this->app->buscar_informacion());
-
-   }
-
-
-    public function guardar_mision(){
-
-
-        $this->app->guardar_mision($_POST);
-   }
-
-
-    public function guardar_vision(){
-
-
-        $this->app->guardar_vision($_POST);
-
-   }
-
-
-    public function guardar_preview(){
-
-
-        $this->app->guardar_preview($_POST);
-
-   }
-
-
-    public function guardar_titulo(){
-
-
-        $this->app->guardar_titulo($_POST);
-
-   }
-
-
-
-
-   /*-----------------------otras cosas------------------------*/
-
-
+function registrar_menu(){
+        $this->app->registrar_menu($_POST);
+    }
+
+    function registrar_rol(){
+        $this->app->registrar_rol($_POST);
+    }
+
+    function buscar_chicas(){
+        $this->chicas=$this->loadModel('principal');
+       echo json_encode( $this->chicas->buscar_chicas($_POST['nombre_chica']));
+    }
+
+
+
+    function eliminar_chicas(){
+        $this->chicas=$this->loadModel('principal');
+        echo json_encode($this->chicas->eliminar_chicas($_POST['id_chica']));
+    }
+
+    function pago_chicas(){
+       $this->chicas=$this->loadModel('principal');
+       echo json_encode($this->chicas->pago_chicas($_POST['id_chica'],$_POST['meses']));
+    }
+
+    function fotos_chicas(){
+        $this->chicas=$this->loadModel('principal');
+        echo json_encode($this->chicas->fotos_chicas($_POST['id_chica']));
+    }
+
+    function foto_perfil(){
+        $this->chicas=$this->loadModel('principal');
+        echo json_encode($this->chicas->foto_perfil($_POST['id_foto'],$_POST['id_chica']));
+    }
+    
     function updonw(){
      $objeto=$this->loadModel('app');
-       
+       echo print_r($_POST);
        if ($_POST['accion']==0) {
             $objeto->gf($_POST);
        }else{

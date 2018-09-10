@@ -16,7 +16,7 @@ class errorController extends Controller
     public function access($codigo)
     {
          $this->_view->setCss(array('css'));
-        $this->_view->titulo = 'Error';
+        $this->_view->titulo = 'Error - OrienteX';
         $this->_view->mensaje = $this->_getError($codigo);
         $this->_view->renderizar('access');
     }

@@ -11,56 +11,43 @@
 }
 /* fin de los media  */
 /* ---------------------------------------------------------------------------------------------------- */
-#regis_de_emp-productora {
-	border-radius: 5px;
-	border: solid 1px #83c0c0;
-	margin-top: 20px;
-	min-height: 141px;
-	padding-top: 11px;
-	background-image: url("../../../../public/img/harina.jpg");
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
-	background-position: 0px 26px;
-	font-size: 15px;
-	color: #397105;
-}
-#regis_de_personal {
-border-radius: 5px;
-	border: solid 1px #83c0c0;
-	margin-top: 20px;
-	min-height: 141px;
-	padding-top: 11px;
-	background-image: url("../../../../public/img/pana.png");
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
-	background-position: 0px 26px;
-	font-size: 15px;
-	color: #397105;
-}
-#text {
-	text-align: center;
-	margin-top: 50px;
-	margin-bottom: 20px;
-	font-size: 28px;
 
-}
-
-#regis_de_emp-productora:hover,#regis_de_personal:hover {
-  cursor: pointer;
-    box-shadow: 10px 9px 9px 0px;
-}
-
-#textt {
+.col-md-8.col-md-offset-2 {
+	color: #ee796d;
+	font-size: 18px;
 	text-align: justify;
-	text-decoration-color: wheat;
-	text-transform: full-width;
-	
-	padding: 10px;
+	line-height: 2;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
-
-
-#text, #textt {
-	border-bottom: 1px solid #b9dec2;
+.title-aviso {
+  background-color: #410707 !important;
+  /* border-color: #000; */
+  border: 1px solid #500000 !important;
+  border-radius: 7px;
 }
 
+.title-termino {
+	color: #df7979 !important;
+}
+
+.texto-top30 {
+	text-shadow: 2px 2px #000;
+	color: #FF8686 !important;
+	margin-top: 10px;
+	font-size: 20px;
+	text-align: center;
+}
+
+.texto-mensaje{
+	margin-top:50px;
+	font-size: 25px;
+	text-align: center;
+}
+
+.logo_centro {
+    height: auto;
+    width: 20%;
+    margin-top: 25px;
+    }

@@ -21,7 +21,7 @@ class recuperarController extends Controller
             endif;
             $this->_view->area_l="apagada";
         
-        $this->_view->titulo = 'Recuperar Cuenta';
+        $this->_view->titulo = 'Recuperar Cuenta - OrienteX';
         $this->_view->setJs(array('recuperar'));
         
        $this->_view->renderizar('index');

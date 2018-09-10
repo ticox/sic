@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * -------------------------------------
+ * www.dlancedu.com | Jaisiel Delance
+ * framework mvc basico
+ * Controller.php
+ * -------------------------------------
+ */
 
 
 abstract class Controller
@@ -21,25 +28,26 @@ abstract class Controller
                             $this->_modelo = new appModel;
                          if (session::get('autenticado')){
 
-                            $usuario=Session::get('id_usuario');
-                             //$this->_view->menu=$this->_modelo->menu(session::get('id_usuario'));   
+                                $usuario=Session::get('id_usuario');
+                             $this->_view->menu=$this->_modelo->menu(session::get('id_usuario'),session::get('role'));   
                          }else{
                             $usuario='NULL';
-                            //$this->_view->menu=$this->_modelo->menu(); 
-                         }}
+                            $this->_view->menu=$this->_modelo->menu(); 
+                         }
+                     }
 
 
                 //-------------------------------bloqueo de la web
 
-                        // if ($this->_modelo->bloqueo() && $this->_view->_controlador!="ina" && $this->_view->_controlador!="login" && !Session::get('autenticado')) {
+                        if ($this->_modelo->bloqueo() && $this->_view->_controlador!="ina" && $this->_view->_controlador!="login" && !Session::get('autenticado')) {
                            
-                        //    $this->redireccionar("ina");
+                           $this->redireccionar("ina");
                         
-                        // }
+                        }
                             
                 //------------------------------log del sistema
 
-                        if (!empty($_SERVER['HTTP_CLIENT_IP'])){
+                       /* if (!empty($_SERVER['HTTP_CLIENT_IP'])){
                                 $ip=$_SERVER['HTTP_CLIENT_IP'];
                             }else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
                             $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
@@ -47,7 +55,7 @@ abstract class Controller
                             $ip=$_SERVER['REMOTE_ADDR'];
                         }
                         $this->_ip=$ip;
-                        $this->_modelo->log($ip,new Request,$usuario);
+                        $this->_modelo->log($ip,new Request,$usuario);*/
    
     }
     

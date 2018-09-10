@@ -20,7 +20,7 @@ $(document).on("click", "#verificar", function(){
 						}else{
 
 							for (var i=0; i < datos.length; i++) {
-			 						$('#select_empresa').append("<option  value="+datos[i].id_empresa+">"+datos[i].nombre_empresa+"</option>");
+			 						$('#select_empresa').append("<option  value="+datos[i].id_role+">"+datos[i].nombre_role+"</option>");
 			 				}
 						
 						$('#empresa').show(1000); //muestro mediante id
@@ -31,5 +31,13 @@ $(document).on("click", "#verificar", function(){
 
 
 });
+
+
+$(document).on("change", "#select_empresa", function(){
+
+	jQuery("#entrar").removeAttr("disabled");
+
+});
+
 
 });

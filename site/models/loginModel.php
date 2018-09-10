@@ -6,21 +6,14 @@ class loginModel extends Model
         parent::__construct();
     }
     
-    public function getUsuario($usuario, $password)
+    public function getUsuario($usuario, $password, $empresa)
     {
 
-        // $datos = $this->_db->query( 
-        //         "select * from usuario " .
-        //         "where login = '$usuario' " .
-        //         "and password = '" . Hash::getHash('sha1', $password, HASH_KEY) ."'"
-        //         );
+         $sql="SELECT DISTINCT usuario.*, role.nombre_role, role.id_role from usuario, empresa_usuario, role where usuario.id_usuario=empresa_usuario.id_usuario and role.id_role='".$empresa."' and usuario.id_usuario=(SELECT id_usuario from usuario where login='".$usuario."' and password= '" . Hash::getHash('sha1', $password, HASH_KEY)."')";
 
-     $datos = $this->_db->query( 
-                "select * from usuarios " .
-                "where login = '$usuario' " .
-                "and clave = '$password'");
+          $datos = $this->_db->query($sql);
         
-        return $datos->fetch();
+          return $datos->fetch();
     }
 
 
@@ -28,7 +21,7 @@ class loginModel extends Model
 
  public function verificar_user($datos){
    
-        $sql="SELECT usuarios.*, empresa.nombre_empresa, roles.nombre_rol from usuarios, empresa, empresa_usuario, roles where usuarios.id_usuario=empresa_usuario.id_usuario and empresa.id_empresa=empresa_usuario.id_empresa and usuarios.id_role=roles.id_rol and usuarios.id_usuario=(SELECT id_usuario from usuarios where login='".$datos['usuario']."' and clave='".$datos['clave']."')";
+         $sql="SELECT usuario.*, role.* from usuario, empresa_usuario, role where usuario.id_usuario=empresa_usuario.id_usuario and role.id_role=empresa_usuario.id_empresa and usuario.id_usuario=(SELECT id_usuario from usuario where login='".$datos['usuario']."' and password= '" . Hash::getHash('sha1', $datos['clave'], HASH_KEY)."')";
         $rs = $this->_db->query($sql);
         $res=$rs->fetchall();
 

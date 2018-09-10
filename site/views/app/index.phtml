@@ -1,379 +1,214 @@
-<div class="container-fluid app">
-<div class="row">
-	<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10  col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+<div class="header-titulos">administrar menuss</div>
 
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<div class="col-xs-12 col-md-6">
 
-<div class="nav-side-menu col-md-2">
-    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-  
-        <div class="menu-list">
-  
-            <ul id="menu-content" class="menu-content collapse out">
-                <li>
-                  <a href="<?php echo BASE_URL ?>">
-                  <i class="fa fa-dashboard fa-lg"></i> Inicio
-                  </a>
-                </li>
+		<table class="table ">
+		<tr class="active">
+		<td>id</td>
+		<td>titulo</td>
+		<td>enlace</td>
+		</tr>
+		<?php for ($i=0; $i < count($this->menus); $i++): ?>
+		<tr>
+		<td><?php echo $this->menus[$i]['id_menu'] ?></td>
+		<td><?php echo $this->menus[$i]['titulo'] ?></td>
+		<td><?php echo $this->menus[$i]['enlace'] ?></td>	
+		</tr>
+		<?php endfor; ?>
+		</table>
 
-                <li  data-toggle="collapse" data-target="#products" class="collapsed">
-                  <a href="#"><i class="fa fa-gift fa-lg"></i> Editar Informacion <span class="arrow"></span></a>
-                </li>
-                <ul class="sub-menu collapse" id="products">
-                    <a id="buscar_nosotros" data-toggle="modal" data-target="#nosotros"><li>Nosotros</li></a>
-                    <a id="buscar_mision" data-toggle="modal" data-target="#mision"><li>Misión</li></a>
-                    <a id="buscar_vision" data-toggle="modal" data-target="#vision"><li>Visión</li></a>
-                    <a id="buscar_preview" data-toggle="modal" data-target="#preview"><li>Preview</li></a>
-                    <a id="buscar_titulo" data-toggle="modal" data-target="#titulo"><li>Titulo de inicio</li></a>
-                    <a id="buscar_contactos" data-toggle="modal" data-target="#contactos"><li>Contactos</li></a>
-                </ul>
-
-
-                <li>
-                  <a id="editar_servicio"><i class="fa fa-globe fa-lg"></i> Editar Servicios </a>
-                </li>  
-                
-
-
-                <li >
-                  <a data-toggle="modal" data-target="#servicio"> <i class="fa fa-car fa-lg"></i> Agregar Nuevo Servicio </a>
-                </li>
-
-                <li >
-                  <a id="agregar_clientes"> <i class="fa fa-car fa-lg"></i> Agregar Clientes </a>
-                </li>
-
-                <li >
-                  <a id="agregar_marcas"> <i class="fa fa-car fa-lg"></i> Agregar Marcas </a>
-                </li>
-
-                 <li>
-                  <a id="crear_usuarios">
-                  <i class="fa fa-users fa-lg"></i> Crear Usuarios
-                  </a>
-                </li>
-            </ul>
-     </div>
 </div>
-<div class=" col-md-9"> 
+	<div class="col-xs-12 col-md-6">
+		
+		<table class="table ">
+		<tr class="active">
+		<?php for ($i=0; $i < count($this->rol); $i++): ?>
+		
+		<td><?php echo $this->rol[$i]['nombre_role'] ?></td>
+		
+		<?php endfor; ?>
+		</tr>
+		<?php for ($i=0; $i < count($this->menus) ; $i++): ?>
+		<tr>
+			<?php for ($x=0; $x < count($this->rol) ; $x++): ?>
+			<td> <input id="permisos_ch" <?php echo $retVal = ($this->matris[$i][$x]['permiso']=="1") ? "checked" : "" ; ?> type="checkbox" data-menu="<?php echo $this->menus[$i]['id_menu'] ?>" data-rol="<?php echo $this->rol[$x]['id_role'] ?>"></td>
+			<?php endfor; ?>
 
-  <div  class="titulo-header col-md-12">
-  
-  <center> <h3> PANEL DE ADMINISTRACION </h3> </center>
-</div>
+		</tr>
+		<?php endfor; ?>
+		</table>
 
 
-<div class="col-md-6 col-md-offset-3" id="div_usuario">
-<div class="col-md-12"><center> <h4> Crear Usuario </h4> </center></div>
- <div class="form-group ">
-              <label class="control-label">Usuario</label>
-              
-                <input type="text" type="text" class="form-control" id="usuario" name="usuario" required="required">
-              
+	</div> 
+	<div class="header-titulos col-xs-6 col-xs-offset-3">  <center>  <h4>Agregar Menu</h4></center> </div>
+	
+	<div class="col-md-6 col-md-offset-3">
+		<div class="form-group">
+            <label for="exampleInputEmail1">Nombre del Menu</label>
+            <input type="text" class="form-control" id="menu" name="menu" placeholder="Menu">
           </div>
-          <div class="form-group">
-              <label class=" control-label">Contraseña</label>
-            
-                <input type="password" type="text" class="form-control" id="contraseña" name="contraseña" required="required">
-              
+                    <div class="form-group">
+            <label for="exampleInputEmail1">Enlace del menu</label>
+            <input type="text" class="form-control" id="enlace" name="enlace" placeholder="Enlace">
           </div>
-          <div class="form-group ">
-              <label class=" control-label">Confirmar Contraseña</label>
-          
-                <input type="password" type="text" class="form-control" id="confirmar_contraseña" name="confirmar" required="required">
-              
+          <center> <button type="button" id="guardar_menu" class="btn btn-default">Registrar</button> </center>
+	</div>
+
+
+	<div class="header-titulos col-xs-6 col-xs-offset-3"> <center>  <h4>Agregar Roles/Empresas </h4></center> </div>
+	
+	<div class="col-md-6 col-md-offset-3">
+		<div class="form-group">
+            <label for="exampleInputEmail1">Nombre del Rol/Empresa</label>
+            <input type="text" class="form-control" id="rol" name="rol" placeholder="Nombre Rol Empresa">
           </div>
-            <div class="form-group ">
-              <button id="crear_usuario" type="button" class="btn btn-primary btn-sm" disabled>Crear</button>
-              <button id="cancelar_crearusuario" type="button" class="btn btn-primary btn-sm">Cancelar</button>
+          <center> <button type="button" id="guardar_rol" class="btn btn-default">Registrar</button> </center>
+	</div>
 
+
+
+	<div class="header-titulos col-xs-6 col-xs-offset-3"> <center>  <h4>Registrar Usuarios </h4></center> </div>
+	
+	<div class="col-md-6 col-md-offset-3">
+          <center> <button type="button" id="guardar_usuarios" class="btn btn-default">Registrar</button> </center>
+	</div>
+
+
+	<div class="header-titulos col-xs-6 col-xs-offset-3"> <center>  <h4>Administrar Usuarios </h4></center> </div>
+	
+	<div class="col-md-6 col-md-offset-3">
+          <center> <button type="button" id="adm_usuarios" class="btn btn-default">Buscar</button> </center>
+	</div>
+
+
+		<div class="header-titulos col-xs-12"> up or donw web</div>
+	<div class="col-md-12">
+		<div class="col-md-6">
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="radio1" value="activar">
+			    activar el sistema 
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="radio1" value="desactivar">
+			    desantivar el sistema
+			  </label>
+			</div>
+			 <div class="form-group">
+			    <label for="">Hasta</label>
+			    <input type="text" value="<?php if (isset($this->bloqueo->fecha)){ echo $this->bloqueo->fecha;} ?>" class="form-control" id="fecha_activo" placeholder="">
+			  </div>
+			  <button type="submit" id="btn_actv" class="btn btn-default">enviar</button>
+		</div>
+		<div class="col-md-6">
+			<div>estado</div>
+			<?php if(!$this->bloqueo): ?>
+				el sistema esta activo.
+			<?php else:  ?>
+				el sistema se encuentra temporalmente fuera de servicio hasta la fecha <?php echo $this->bloqueo_datos['fecha'] ?>
+			<?php endif; ?>
+		</div>
+			
+		
+	</div>
+	
+
+
+	
+<div class="header-titulos col-xs-12"> logs del sistemas</div>
+	<div class="col-xs-12 well">
+
+	<table class="table table-bordered">
+		
+		<tr>
+	
+		<td id="log_cen" colspan="7" >ips registrados</td>
+		
+		</tr>
+		<tr>
+	
+		<td>total</td>
+		<td>hoy</td>
+		<td>estas semana</td>
+		<td>este mes</td>
+		</tr>
+		<tr>
+	
+		<td><?php echo $this->cont['total']['num'] ?></td>
+		<td><?php echo $this->cont['hoy']['num'] ?></td>
+		<td><?php echo $this->cont['semana']['num'] ?></td>
+		<td><?php echo $this->cont['mes']['num'] ?></td>
+		</tr>
+
+		<tr><td id="log_cen" colspan="7">log del sistema</td></tr>
+		<tr>
+		<td>ip</td>
+		<td>id_usuario</td>
+		<td>login</td>
+		<td>controlador</td>
+		<td>metodo</td>
+		<td>fecha</td>
+		<td>hora</td>
+		</tr>
+
+		<?php for ($i=0; $i < count($this->logs) ; $i++): ?>
+
+		<tr>
+		<td><?php echo $this->logs[$i]['ip'] ?></td>
+		<td><?php echo $this->logs[$i]['id_usuario'] ?></td>
+		<td><?php echo $this->logs[$i]['login'] ?></td>
+		<td><?php echo $this->logs[$i]['controlador'] ?></td>
+		<td><?php echo $this->logs[$i]['metodo'] ?></td>
+		<td><?php echo $this->logs[$i]['fecha'] ?></td>
+		<td><?php echo $this->logs[$i]['hora'] ?></td>
+		</tr>
+
+
+		<?php endfor; ?>
+
+	</table>
+
+		
+		
+	</div>
+
+
+</div>
+
+
+
+
+
+<div class="modal fade" tabindex="-1" id="modalpago" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+  <input type="text" hidden id="id_chica_pago">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Realizar Pago</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12"> 
+          	<select id="meses" class="form-control">
+          		<option>--Seleccione--</option>
+          		<option value="1">1 mes</option>
+          		<option value="3">3 meses</option>
+          		<option value="6">6 meses</option>
+          	</select>
           </div>
-
-
-</div>
-
-<div class="col-md-6 col-md-offset-3" id="div_servicio">
-<div class="col-md-12"><center> <h4> Editar Servicios </h4> </center></div>
-    <div class="form-group">
-    <label for="exampleFormControlSelect1">Seleccione el servicio a modificar</label>
-    <select class="form-control" id="modificar_servicio">
-      <option> -> Seleccione <- </option>
-      
-    </select>
-  </div>
-          
-      <div class="form-group ">
-      <center><button id="cancelar_mservicio" type="button" class="btn btn-primary btn-sm">Cancelar</button> </center>
-      </div>
-</div>
-
-<div class="col-md-6 col-md-offset-3" id="div_clientes">
-<div class="col-md-12"><center> <h4> Agregar Clientes </h4> </center></div>
-<form id="form_agregar_cliente" enctype="multipart/form-data" method="post" action="<?php echo BASE_URL ?>app/guardar_publicacion_cliente" >    
-    <div class="form-group">
-  
-        <label class=" control-label">Nombre del Cliente</label>
-        <input type="text" type="text" class="form-control" id="nombre_cliente" name="nombre_cliente" >
-    </div>
-
-    <div class="form-group">
-  
-        <label class=" control-label">Link del Cliente</label>
-        <input type="text" type="text" class="form-control" id="linkc" name="linkc" >
-    </div>
-    <div class="form-group">
-  
-        <label class=" control-label">Seleccionar la Imagen</label>
-        <input  type="file" id="files" name="foto[]">
-    </div>
-    <div class="row">
-        <div id="list" class="col-md-12 titulo-img"><center> <h4> Previsualización </h4> </center></div>
-    </div>
-            
-
-          
-      <div class="form-group ">
-      <center><button id="guardar_clientes" type="submit" class="btn btn-primary btn-sm" disabled>Guardar</button> <button id="cancelar_aclientes" type="button" class="btn btn-primary btn-sm">Cancelar</button> </center>
-      </div>
-    </form>
-</div>
-
-
-
-
-<div class="col-md-6 col-md-offset-3" id="div_marcas">
-<div class="col-md-12"><center> <h4> Agregar Marcas </h4> </center></div>
-    <form id="form_agregar_cliente" enctype="multipart/form-data" method="post" action="<?php echo BASE_URL ?>app/guardar_publicacion_marca" > 
-      <div class="form-group">
-  
-        <label class=" control-label">Nombre de la marca</label>
-        <input type="text" type="text" class="form-control" id="nombre_marca" name="nombre_marca" >
-    </div>
-
-    <div class="form-group">
-  
-        <label class=" control-label">Seleccionar la Imagen</label>
-        <input  type="file" id="files2" name="foto[]">
-    </div>
-    <div class="row">
-        <div id="list2" class="col-md-12 titulo-img"><center> <h4> Previsualización </h4> </center></div>
-    </div>
-          
-      <div class="form-group ">
-      <center><button id="guardar_marcas" type="submit" class="btn btn-primary btn-sm" disabled>Guardar</button> <button id="cancelar_amarcas" type="button" class="btn btn-primary btn-sm">Cancelar</button> </center>
-      </div>
-
-    </form>
-</div>
-
-</div>
-
-
-
-
-
-</div>
-</div>
-
-
-
-<!-- Modal Nosotros-->
-<div class="modal fade modalapp" id="nosotros" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar Nosotros</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="divnosotros">
-        <h3> <center> Cargando... </center></h3>
+        </div>        
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="guardar_nosotros">Guardar Cambios</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" id="pago" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
 </div>
-
-
-<!-- Modal mision-->
-<div class="modal fade modalapp" id="mision" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar Misión</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="divmision">
-         <h3> <center> Cargando... </center></h3>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="guardar_mision">Guardar Cambios</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Modal vision -->
-<div class="modal fade modalapp" id="vision" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar Visión</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="divvision">
-        <h3> <center> Cargando... </center></h3>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="guardar_vision">Guardar Cambios</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Modal preview -->
-<div class="modal fade modalapp" id="preview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar Preview</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="divpreview">
-        <h3> <center> Cargando... </center></h3>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="guardar_preview">Guardar Cambios</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal titulo -->
-
-<div class="modal fade modalapp" id="titulo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar Titulo</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="divtitulo">
-        <h3> <center> Cargando... </center></h3>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="guardar_titulo">Guardar Cambios</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Modal contactos -->
-
-<div class="modal fade modalapp" id="contactos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar Contactos</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="divcontactos">
-        <h3> <center> Cargando... </center></h3>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="guardar_contactos">Guardar Cambios</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Nuevo Servicio -->
-
-<div class="modal fade modalapp" id="servicio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Nuevo Servicio</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="nvoservicio">
-         <div class="form-group ">
-              <label class="control-label">Titulo</label>
-              
-                <input type="text" type="text" class="form-control" id="titulo_servicio" name="titulo_servicio" required="required">
-              
-          </div>
-
-          <div class="form-group ">
-              <label class="control-label">Descripción</label>
-              
-                <textarea  class="form-control" id="descripcion" required="required"> </textarea>
-              
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="guardar_servicio">Guardar Cambios</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<!-- Modificar Servicio -->
-
-<div class="modal fade modalapp" id="mod_servicio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modificar Servicio</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="mservicio">
-         <h3> <center> Cargando... </center></h3>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="servicio_modificado">Guardar Cambios</button>
-        <button type="button" class="btn btn-secondary" id="eliminar_servicio">Eliminar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
 
 
 

@@ -18,16 +18,16 @@ class loginController extends Controller
         }
         
         $this->_view->titulo = 'Iniciar Sesion';
-        //$this->_view->setJs(array('js','tilt.jquery.min','select2.min','popper','jquery-3.2.1.min','main1'));
+        $this->_view->setCss(array('css'));
         $this->_view->setJs(array('js'));
 
         if(isset($_POST['enviar'])){
             $this->_view->datos = $_POST;
-            
-            
+  
             $row = $this->_login->getUsuario(
                     $_POST['usuario'],
-                    $_POST['clave']
+                    $_POST['clave'],
+                    $_POST['s_empresa']
                     );
             
             if(!$row){
@@ -45,6 +45,7 @@ class loginController extends Controller
                         
             Session::set('autenticado', true);
             Session::set('role', $row['id_role']);
+            Session::set('empresa', $row['nombre_role']);
             Session::set('usuario', $row['login']);
             Session::set('id_usuario', $row['id_usuario']);
             Session::set('tiempo', time());
