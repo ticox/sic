@@ -1,12 +1,6 @@
 <?php
 
-/*
- * -------------------------------------
- * www.dlancedu.com | Jaisiel Delance
- * framework mvc basico
- * Request.php
- * -------------------------------------
- */
+
 
 
 class Request
