@@ -61,7 +61,17 @@ class appController extends Controller
 	}
 
 
-  
+    function verificar_login(){
+       echo json_encode( $this->app->verificar_login($_POST['usuario']));
+    }
+
+
+     function buscar_empresas(){
+       echo json_encode( $this->app->buscar_empresas());
+    }
+
+
+
     function permisos_ch(){
 
 
@@ -77,9 +87,17 @@ function registrar_menu(){
         $this->app->registrar_rol($_POST);
     }
 
-    function buscar_chicas(){
-        $this->chicas=$this->loadModel('principal');
-       echo json_encode( $this->chicas->buscar_chicas($_POST['nombre_chica']));
+   public function guardar_usuario(){
+
+
+        $this->app->guardar_usuario($_POST);
+
+
+   }
+
+
+   function buscar_usuario(){
+       echo json_encode( $this->app->buscar_usuario($_POST['usuario']));
     }
 
 

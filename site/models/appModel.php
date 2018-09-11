@@ -66,6 +66,57 @@ public function menu($id = false,$role = false){
 
 
 
+    public function guardar_usuario($datos){
+
+ $sql="INSERT INTO usuario values ('','".$datos['usuario']."' ,'" . Hash::getHash('sha1', $datos['clave'], HASH_KEY) ."','1')";
+        $this->_db->query($sql);
+   }
+
+
+public function buscar_usuario($nombre){
+   
+$sql="select * from usuario 
+WHERE usuario.login 
+like '$nombre%'";
+$datos = $this->_db->query($sql);
+return $datos->fetchall();
+}
+
+
+
+    public function verificar_login($usuario){
+
+
+    $sql="select * from usuario where login='$usuario'";
+       
+
+            $datos = $this->_db->query($sql);
+        //$datos->setFetchMode(PDO::FETCH_ASSOC);
+            
+
+
+       return $datos->fetch();
+      
+
+
+    }
+
+
+    public function buscar_empresas(){
+
+
+    $sql="select * from role";
+
+            $datos = $this->_db->query($sql);
+        //$datos->setFetchMode(PDO::FETCH_ASSOC);
+
+       return $datos->fetchall();
+    
+
+    }
+
+
+
     public function registrar_menu($datos){
 
     $sql="insert into menu values('','".$datos['menu']."','".$datos['enlace']."')";

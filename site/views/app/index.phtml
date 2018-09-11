@@ -41,22 +41,9 @@
 
 
 	</div> 
-	<div class="header-titulos col-xs-6 col-xs-offset-3">  <center>  <h4>Agregar Menu</h4></center> </div>
-	
-	<div class="col-md-6 col-md-offset-3">
-		<div class="form-group">
-            <label for="exampleInputEmail1">Nombre del Menu</label>
-            <input type="text" class="form-control" id="menu" name="menu" placeholder="Menu">
-          </div>
-                    <div class="form-group">
-            <label for="exampleInputEmail1">Enlace del menu</label>
-            <input type="text" class="form-control" id="enlace" name="enlace" placeholder="Enlace">
-          </div>
-          <center> <button type="button" id="guardar_menu" class="btn btn-default">Registrar</button> </center>
-	</div>
+	<div class="well well-lg col-md-12">  
 
-
-	<div class="header-titulos col-xs-6 col-xs-offset-3"> <center>  <h4>Agregar Roles/Empresas </h4></center> </div>
+		<div class="header-titulos col-xs-6 col-xs-offset-3"> <center>  <h4>Agregar Roles/Empresas </h4></center> </div>
 	
 	<div class="col-md-6 col-md-offset-3">
 		<div class="form-group">
@@ -66,74 +53,138 @@
           <center> <button type="button" id="guardar_rol" class="btn btn-default">Registrar</button> </center>
 	</div>
 
-
-
-	<div class="header-titulos col-xs-6 col-xs-offset-3"> <center>  <h4>Registrar Usuarios </h4></center> </div>
+	</div>
 	
-	<div class="col-md-6 col-md-offset-3">
-          <center> <button type="button" id="guardar_usuarios" class="btn btn-default">Registrar</button> </center>
+
+
+	
+<div class="well well-lg col-md-12"> 
+
+<div class="header-titulos col-xs-6 col-xs-offset-3"> <center>  <h4>Registrar Usuarios </h4></center> </div>
+	
+	<div class="col-md-6 col-md-offset-3" id="div_usuario">
+ <div class="form-group ">
+              <label >Usuario</label>
+              	 <input type="hidden"  id="verificar_usuario">
+              	 <input type="hidden"  id="verificar_clave">
+                <input type="text" type="text" class="form-control" id="usuario" name="usuario" required="required">
+              	<p id="usuario_existe"> <spam class="offline"> El Nombre de usuario ya existe. </spam></p>
+              	<p id="usuario_disponible"> <spam class="online"> El Nombre de usuario esta disponible. </spam></p>
+          </div>
+          <div class="form-group">
+              <label>Contraseña</label>
+            
+                <input type="password" type="text" class="form-control" id="contraseña" name="contraseña" required="required">
+              
+          </div>
+          <div class="form-group ">
+              <label >Confirmar Contraseña</label>
+          
+                <input type="password" type="text" class="form-control" id="confirmar_contraseña" name="confirmar" required="required">
+                <p  id="pass_no_coinciden"> <spam class="offline">Las Contraseñas no coinciden.</spam></p>
+                <p  id="verificado"> <spam class="online">Ahora si puede registrar.</spam></p>
+              
+          </div>
+        
+<center> <button type="button" id="guardar_usuario" class="btn btn-default" disabled>Registrar</button> </center>
+</div>
+
+          
 	</div>
 
 
-	<div class="header-titulos col-xs-6 col-xs-offset-3"> <center>  <h4>Administrar Usuarios </h4></center> </div>
+</div>
+
+
+
+<div class="well well-lg col-md-12"> 
+
+
+<div class="header-titulos col-xs-6 col-xs-offset-3"> <center>  <h4>Administrar Usuarios </h4></center> </div>
 	
-	<div class="col-md-6 col-md-offset-3">
+	<div class="col-xs-6 col-xs-offset-3">
+		<label for="exampleInputEmail1">Buscar Usuario por el Login</label>
+		<center><input class="form-control" type="text" id="buscar_usuario"></center>
+	</div>
+	<div class="col-md-12" id="div_contenedor">
+		
+	</div>
+
+
+
+
+	<!-- <div class="col-md-6 col-md-offset-3">
           <center> <button type="button" id="adm_usuarios" class="btn btn-default">Buscar</button> </center>
 	</div>
+ -->
+
+</div>
 
 
-		<div class="header-titulos col-xs-12"> up or donw web</div>
+
+
+
+
+
+
+<!-- Poner a Funcionar Esta Parte del Sistema.... -->
+
+
+	
+<div class="well well-lg col-md-12" hidden> 
+		<div class="header-titulos col-xs-12"> <center> <h4>Colocar la web en mantenimiento</h4> </center></div>
 	<div class="col-md-12">
 		<div class="col-md-6">
 			<div class="radio">
 			  <label>
 			    <input type="radio" name="optionsRadios" id="radio1" value="activar">
-			    activar el sistema 
+			    Activar la Web
 			  </label>
 			</div>
 			<div class="radio">
 			  <label>
 			    <input type="radio" name="optionsRadios" id="radio1" value="desactivar">
-			    desantivar el sistema
+			   Desactivar la Web
 			  </label>
 			</div>
 			 <div class="form-group">
-			    <label for="">Hasta</label>
-			    <input type="text" value="<?php if (isset($this->bloqueo->fecha)){ echo $this->bloqueo->fecha;} ?>" class="form-control" id="fecha_activo" placeholder="">
+			    <label for="">Configurar la fecha:</label>
+			    <input type="date" value="<?php if (isset($this->bloqueo->fecha)){ echo $this->bloqueo->fecha;} ?>" class="form-control" id="fecha_activo" placeholder="">
 			  </div>
 			  <button type="submit" id="btn_actv" class="btn btn-default">enviar</button>
 		</div>
 		<div class="col-md-6">
-			<div>estado</div>
+			<center><div>Estado del Sistema:</div></center>
 			<?php if(!$this->bloqueo): ?>
-				el sistema esta activo.
+				<center> <spam class="online"> ONLINE </spam> </center>
 			<?php else:  ?>
-				el sistema se encuentra temporalmente fuera de servicio hasta la fecha <?php echo $this->bloqueo_datos['fecha'] ?>
+				<center><spam class="offline"> OFFLINE </spam> </center> <br> <center> Hasta la fecha <?php echo $this->bloqueo_datos['fecha'] ?> </center>
 			<?php endif; ?>
 		</div>
 			
 		
 	</div>
 	
+</div>
 
 
 	
-<div class="header-titulos col-xs-12"> logs del sistemas</div>
-	<div class="col-xs-12 well">
 
+	<div class="col-xs-12 well">
+		<div class="header-titulos col-xs-12">  <center> <h4> Log </h4> </center></div>
 	<table class="table table-bordered">
 		
 		<tr>
 	
-		<td id="log_cen" colspan="7" >ips registrados</td>
+		<td id="log_cen" colspan="7" >Ips Registrados</td>
 		
 		</tr>
 		<tr>
 	
-		<td>total</td>
-		<td>hoy</td>
-		<td>estas semana</td>
-		<td>este mes</td>
+		<td>Total</td>
+		<td>Hoy</td>
+		<td>Esta semana</td>
+		<td>Este mes</td>
 		</tr>
 		<tr>
 	
@@ -180,35 +231,27 @@
 
 
 
-
-
-<div class="modal fade" tabindex="-1" id="modalpago" role="dialog" aria-labelledby="gridSystemModalLabel">
+<div class="modal fade" id="modalasignar" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-  <input type="text" hidden id="id_chica_pago">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">Realizar Pago</h4>
+        <h5 class="modal-title" id="exampleModalLabel">Asignar Empresa a usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-md-12"> 
-          	<select id="meses" class="form-control">
-          		<option>--Seleccione--</option>
-          		<option value="1">1 mes</option>
-          		<option value="3">3 meses</option>
-          		<option value="6">6 meses</option>
-          	</select>
-          </div>
-        </div>        
+      <div class="modal-body" id="a_empresas">
+         <h3> <center> Cargando... </center></h3>
       </div>
       <div class="modal-footer">
-        <button type="button" id="pago" class="btn btn-primary">Guardar</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="servicio_modificado">Asignar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
 </div>
+
+
 
 
 

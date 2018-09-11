@@ -1,9 +1,7 @@
 <?php
 
 define('BASE_URL', 'http://localhost/sic/');
-
 define('DEFAULT_CONTROLLER', 'login');
-
 define('DEFAULT_LAYOUT', 'basic');
 define('APP_NAME', 'Sic');
 define('APP_SLOGAN', 'Sic');
@@ -17,6 +15,4 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'sic');
 define('DB_CHAR', 'utf8');
-
-
 ?>
