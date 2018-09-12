@@ -110,7 +110,7 @@ return $datos->fetchall();
     }
 
 
-public function buscar_empresas_usuario(id_usuario){
+public function buscar_empresas_usuario($id_usuario){
 
 
     $sql="select role.nombre_role from empresa_usuario, role, usuario where ";
@@ -264,7 +264,7 @@ $sql = "UPDATE permisos SET permiso = $retVal WHERE id_menu = $menu AND id_role=
                 }
     }
                  public function bloqueo_datos(){
-                     
+
                 $sql = "SELECT * FROM switch";
                 $rs=$this->_db->query($sql);
                

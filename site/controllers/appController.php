@@ -70,7 +70,7 @@ class appController extends Controller
        echo json_encode( $this->app->buscar_empresas());
     }
 function buscar_empresas_usuario(){
-       echo json_encode( $this->app->buscar_empresas_usuario($_POST['usuario'])));
+       echo json_encode( $this->app->buscar_empresas_usuario($_POST['usuario']));
     }
 
 
