@@ -31,11 +31,8 @@ public function menu($id = false,$role = false){
 	$menu = $this->_db->query($sql);
 	return $menu->fetchall();
 
-
 	}
 }
-
-
 
     public function traer_menus(){
 
@@ -83,7 +80,6 @@ return $datos->fetchall();
 }
 
 
-
     public function verificar_login($usuario){
 
 
@@ -92,8 +88,6 @@ return $datos->fetchall();
 
             $datos = $this->_db->query($sql);
         //$datos->setFetchMode(PDO::FETCH_ASSOC);
-            
-
 
        return $datos->fetch();
       
@@ -106,6 +100,20 @@ return $datos->fetchall();
 
 
     $sql="select * from role";
+
+            $datos = $this->_db->query($sql);
+        //$datos->setFetchMode(PDO::FETCH_ASSOC);
+
+       return $datos->fetchall();
+    
+
+    }
+
+
+public function buscar_empresas_usuario(id_usuario){
+
+
+    $sql="select role.nombre_role from empresa_usuario, role, usuario where ";
 
             $datos = $this->_db->query($sql);
         //$datos->setFetchMode(PDO::FETCH_ASSOC);
@@ -170,11 +178,7 @@ $sql = "UPDATE permisos SET permiso = $retVal WHERE id_menu = $menu AND id_role=
         $datos = $this->_db->query($sql);
     }
 
-
-
     }
-
-
     public function log($ip,$peticion,$usuario){
 
 
@@ -258,25 +262,14 @@ $sql = "UPDATE permisos SET permiso = $retVal WHERE id_menu = $menu AND id_role=
                 {
                   return false;
                 }
-
-            
-        
-
     }
                  public function bloqueo_datos(){
-
-         
+                     
                 $sql = "SELECT * FROM switch";
                 $rs=$this->_db->query($sql);
                
                   return $rs->fetch();
-                
-
-            
-        
-
     }
-
 }
 
 ?>

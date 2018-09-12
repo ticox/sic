@@ -206,7 +206,6 @@ $('#confirmar_contraseña').focusout(function() {
 }
     
 
-
   });
   
 
@@ -268,7 +267,7 @@ function mostrar_usuarios(usuario){
 			html+="<td>" + datos[i].login + "</td>";
 			html+="<td><a id='eliminar_usuario' data-toggle='tooltip' data-placement='bottom' title='Eliminar Usuario' data-id_usuario='"+datos[i].id_usuario+"'><span class='glyphicon glyphicon-trash'></span></a>";
 			html+=" <a data-toggle='modal' id='asignar_empresa' data-target='#modalasignar' title='Asignar Empresa' data-login='"+datos[i].login+"' data-id_usuario='"+datos[i].id_usuario+"'><span class='glyphicon glyphicon-plus'></span></a>";
-			html+=" <a data-toggle='modal' id='asignar_empresa' data-target='#' title='Ver Empresas' data-login='"+datos[i].login+"' data-id_usuario='"+datos[i].id_usuario+"'><span class=' glyphicon glyphicon-th-list'></span></a>";
+			html+=" <a data-toggle='modal' id='ver_empresas' data-target='modalempresas' title='Ver Empresas' data-login='"+datos[i].login+"' data-id_usuario='"+datos[i].id_usuario+"'><span class=' glyphicon glyphicon-th-list'></span></a></td>";
 			
 
 			}
@@ -279,6 +278,9 @@ function mostrar_usuarios(usuario){
 				
 	           },"json");
 };
+
+
+
 
 $(document).on("keyup", "#buscar_usuario", function(){
 	usuario=$("#buscar_usuario").val();
@@ -303,6 +305,56 @@ $(document).on('click', '#asignar_empresa', function() {
 				 $("#a_empresas").html(html);
 	           },'json');
 			    	
+		
+	});
+
+function mostrar_empresas(usuario){
+	$.post(base_url + 'app/buscar_empresas_usuario',{
+		usuario: usuario
+			},function(datos){
+			console.log(datos);
+			var html=" <br><div class='panel panel-default'>";
+			html+="<div class='panel-heading'>";
+			html+=" <h3 class='panel-title'><center><b>Resultado</b></center></h3>";
+			html+="</div>";
+			html+="<div class='panel-body'>";
+			html+="<div class='table-responsive'>";
+			
+			html+="<table class='table table-striped table-hover '><thead>";
+			html+="<tr class='default'>";
+			html+="<th>#</th>";
+			html+="<th>Empresa</th>";
+			html+="<th>Acciones</th>";
+			html+="</tr>";
+			html+="</thead>";
+			html+="<tbody>";
+		if(datos==""){
+			
+			html+="<tr><td colspan='5'> <b><center>El usuario no posee empresas asociadas</center></b></td></tr>";
+			html+="</tbody> </table> </div> </div> </div>";
+			$("#ver_empresas").html("");
+			$("#ver_empresas").html(html);
+			exit();
+			}	
+			for(var i = 0; i < datos.length; i++)
+			{	
+			html+="<tr><td>" + i + "</td>";
+			html+="<td>" + datos[i].nombre_role + "</td>";
+			html+="<td><a id='eliminar_empresa_usuario' data-toggle='tooltip' data-placement='bottom' title='Desafiliar esta empresa' data-id_usuario='"+datos[i].id_usuario+"'><span class='glyphicon glyphicon-trash'></span></a></td>";	
+			}
+			
+			html+="</tbody> </table> </div> </div> </div>";
+			$("#ver_empresas").html("");
+			$("#ver_empresas").html(html);
+				
+	           },"json");
+};
+
+$(document).on('click', '#ver_empresas', function() {
+	 		
+	 		var user=this.dataset.id_usuario;
+
+	 		mostrar_empresas(user);		    	
 		
 	});
 
