@@ -269,7 +269,7 @@ function mostrar_usuarios(usuario){
 			html+="<td><a id='eliminar_usuario' data-toggle='tooltip' data-placement='bottom' title='Eliminar Usuario' data-id_usuario='"+datos[i].id_usuario+"'><span class='glyphicon glyphicon-trash'></span></a>";
 			html+=" <a data-toggle='modal' id='asignar_empresa' data-target='#modalasignar' title='Asignar Empresa' data-login='"+datos[i].login+"' data-id_usuario='"+datos[i].id_usuario+"'><span class='glyphicon glyphicon-plus'></span></a>";
 			html+=" <a data-toggle='modal' id='asignar_empresa' data-target='#' title='Ver Empresas' data-login='"+datos[i].login+"' data-id_usuario='"+datos[i].id_usuario+"'><span class=' glyphicon glyphicon-th-list'></span></a>";
-			html+=" <a data-toggle='modal' id='asignar_empresa' data-target='#' title='Eliminar Empresa' data-login='"+datos[i].login+"' data-id_usuario='"+datos[i].id_usuario+"'><span class=' glyphicon glyphicon-minus'></span></a></td>";
+			
 
 			}
 			
