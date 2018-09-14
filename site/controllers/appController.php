@@ -74,6 +74,21 @@ function buscar_empresas_usuario(){
     }
 
 
+    function eliminar_usuario(){
+        $this->app->eliminar_usuario($_POST['usuario']);
+    }
+
+
+    function asignar_empresa_usuario(){
+       $this->app->asignar_empresa_usuario($_POST['usuario'],$_POST['role']);
+    }
+
+    function eliminar_empresa_usuario(){
+       $this->app->eliminar_empresa_usuario($_POST['usuario'],$_POST['role']);
+    }
+
+
+
     function permisos_ch(){
 
 

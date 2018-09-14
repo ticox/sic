@@ -113,13 +113,48 @@ return $datos->fetchall();
 public function buscar_empresas_usuario($id_usuario){
 
 
-    $sql="select role.nombre_role from empresa_usuario, role, usuario where ";
+    $sql="select DISTINCT role.nombre_role, role.id_role from empresa_usuario, role, usuario where empresa_usuario.id_empresa=role.id_role and empresa_usuario.id_usuario=$id_usuario";
 
             $datos = $this->_db->query($sql);
         //$datos->setFetchMode(PDO::FETCH_ASSOC);
 
        return $datos->fetchall();
     
+
+    }
+
+
+    public function eliminar_usuario($id_usuario){
+
+
+     $sql="delete FROM usuario where usuario.id_usuario=$id_usuario";
+
+            $datos = $this->_db->query($sql);
+        //$datos->setFetchMode(PDO::FETCH_ASSOC);
+    
+
+    }
+
+
+    public function asignar_empresa_usuario($usuario, $role){
+
+     $sql="insert into `empresa_usuario` VALUES ('',$role,$usuario)";
+       
+        $datos = $this->_db->query($sql);
+
+        return ;
+
+
+    }
+
+    public function eliminar_empresa_usuario($usuario, $role){
+
+    $sql="delete FROM empresa_usuario where empresa_usuario.id_usuario=$usuario and empresa_usuario.id_empresa=$role";
+       
+        $datos = $this->_db->query($sql);
+
+        return ;
+
 
     }
 
